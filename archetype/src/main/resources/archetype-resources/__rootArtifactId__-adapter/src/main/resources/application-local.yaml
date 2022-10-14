@@ -1,0 +1,146 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+--- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 数据库相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
+spring:
+
+  ${symbol_pound} 数据源配置项
+  autoconfigure:
+    exclude:
+      - com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure ${symbol_pound} 排除 Druid 的自动配置，使用 dynamic-datasource-spring-boot-starter 配置多数据源
+  datasource:
+    druid: ${symbol_pound} Druid 【监控】相关的全局配置
+      web-stat-filter:
+        enabled: true
+      stat-view-servlet:
+        enabled: true
+        allow: ${symbol_pound} 设置白名单，不填则允许所有访问
+        url-pattern: /druid/*
+        login-username: ${symbol_pound} 控制台管理用户名和密码
+        login-password:
+      filter:
+        stat:
+          enabled: true
+          log-slow-sql: true ${symbol_pound} 慢 SQL 记录
+          slow-sql-millis: 100
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+    dynamic: ${symbol_pound} 多数据源配置
+      druid: ${symbol_pound} Druid 【连接池】相关的全局配置
+        initial-size: 5 ${symbol_pound} 初始连接数
+        min-idle: 10 ${symbol_pound} 最小连接池数量
+        max-active: 20 ${symbol_pound} 最大连接池数量
+        max-wait: 600000 ${symbol_pound} 配置获取连接等待超时的时间，单位：毫秒
+        time-between-eviction-runs-millis: 60000 ${symbol_pound} 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位：毫秒
+        min-evictable-idle-time-millis: 300000 ${symbol_pound} 配置一个连接在池中最小生存的时间，单位：毫秒
+        max-evictable-idle-time-millis: 900000 ${symbol_pound} 配置一个连接在池中最大生存的时间，单位：毫秒
+        validation-query: SELECT 1 FROM DUAL ${symbol_pound} 配置检测连接是否有效
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+      primary: master
+      datasource:
+        master:
+          name: saltyfish
+          url: jdbc:mysql://81.68.173.122:7158/${symbol_dollar}{spring.datasource.dynamic.datasource.master.name}?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&nullCatalogMeansCurrent=true ${symbol_pound} MySQL Connector/J 8.X 连接的示例
+          ${symbol_pound}          url: jdbc:mysql://127.0.0.1:3306/${symbol_dollar}{spring.datasource.dynamic.datasource.master.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT ${symbol_pound} MySQL Connector/J 5.X 连接的示例
+          ${symbol_pound}          url: jdbc:postgresql://127.0.0.1:5432/${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name} ${symbol_pound} PostgreSQL 连接的示例
+          ${symbol_pound}          url: jdbc:oracle:thin:@127.0.0.1:1521:xe ${symbol_pound} Oracle 连接的示例
+          ${symbol_pound}          url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=${symbol_dollar}{spring.datasource.dynamic.datasource.master.name} ${symbol_pound} SQLServer 连接的示例
+          username: amos_saltyfish
+          password: amos0905saltyfish
+        ${symbol_pound}          username: sa
+        ${symbol_pound}          password: JSm:g(*%lU4ZAkz06cd52KqT3)i1?H7W
+        slave: ${symbol_pound} 模拟从库，可根据自己需要修改
+          name: saltyfish
+          url: jdbc:mysql://81.68.173.122:7158/${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name}?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&nullCatalogMeansCurrent=true ${symbol_pound} MySQL Connector/J 8.X 连接的示例
+          ${symbol_pound}          url: jdbc:mysql://127.0.0.1:3306/${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT ${symbol_pound} MySQL Connector/J 5.X 连接的示例
+          ${symbol_pound}          url: jdbc:postgresql://127.0.0.1:5432/${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name} ${symbol_pound} PostgreSQL 连接的示例
+          ${symbol_pound}          url: jdbc:oracle:thin:@127.0.0.1:1521:xe ${symbol_pound} Oracle 连接的示例
+          ${symbol_pound}          url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name} ${symbol_pound} SQLServer 连接的示例
+          username: amos_saltyfish
+          password: amos0905saltyfish
+  ${symbol_pound}          username: sa
+  ${symbol_pound}          password: JSm:g(*%lU4ZAkz06cd52KqT3)i1?H7W
+
+  ${symbol_pound} Redis 配置。Redisson 默认的配置足够使用，一般不需要进行调优
+  redis:
+    host: 81.68.173.122 ${symbol_pound} 地址
+    port: 8369 ${symbol_pound} 端口
+    database: 0 ${symbol_pound} 数据库索引
+    password: Zz2825311647 ${symbol_pound} 密码，建议生产环境开启
+
+jasypt:
+  encryptor:
+    password: yuanma ${symbol_pound} 加解密的秘钥
+
+--- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} MQ 消息队列相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
+spring:
+  cloud:
+    stream:
+      rocketmq:
+        ${symbol_pound} RocketMQ Binder 配置项，对应 RocketMQBinderConfigurationProperties 类
+        binder:
+          name-server: 81.68.173.122:9876 ${symbol_pound} RocketMQ Namesrv 地址
+
+--- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 定时任务相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
+xxl:
+  job:
+    admin:
+      addresses: http://81.68.173.122:8586/xxl-job-admin ${symbol_pound} 调度中心部署跟地址
+
+--- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 服务保障相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
+
+${symbol_pound} Lock4j 配置项
+lock4j:
+  acquire-timeout: 3000 ${symbol_pound} 获取分布式锁超时时间，默认为 3000 毫秒
+  expire: 30000 ${symbol_pound} 分布式锁的超时时间，默认为 30 毫秒
+
+--- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 监控相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
+
+${symbol_pound} Actuator 监控端点的配置项
+management:
+  endpoints:
+    web:
+      base-path: /actuator ${symbol_pound} Actuator 提供的 API 接口的根目录。默认为 /actuator
+      exposure:
+        include: '*' ${symbol_pound} 需要开放的端点。默认值只打开 health 和 info 两个端点。通过设置 * ，可以开放所有端点。
+
+${symbol_pound} Spring Boot Admin 配置项
+spring:
+  boot:
+    admin:
+      ${symbol_pound} Spring Boot Admin Client 客户端的相关配置
+      client:
+        url: http://127.0.0.1:${symbol_dollar}{server.port}/${symbol_dollar}{spring.boot.admin.context-path} ${symbol_pound} 设置 Spring Boot Admin Server 地址
+        instance:
+          service-host-type: IP ${symbol_pound} 注册实例时，优先使用 IP [IP, HOST_NAME, CANONICAL_HOST_NAME]
+      ${symbol_pound} Spring Boot Admin Server 服务端的相关配置
+      context-path: /admin ${symbol_pound} 配置 Spring
+
+${symbol_pound} 日志文件配置
+logging:
+  level:
+    ${symbol_pound} 配置自己写的 MyBatis Mapper 打印日志
+    ${groupId}.infra.mapper: debug
+
+--- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
+
+${symbol_pound} 芋道配置项，设置当前项目所有自定义的配置
+saltyfish:
+  env: ${symbol_pound} 多环境的配置项
+    tag: ${symbol_dollar}{HOSTNAME}
+  security:
+    mock-enable: false
+  xss:
+    enable: false
+    exclude-urls: ${symbol_pound} 如下两个 url，仅仅是为了演示，去掉配置也没关系
+      - ${symbol_dollar}{spring.boot.admin.context-path}/** ${symbol_pound} 不处理 Spring Boot Admin 的请求
+      - ${symbol_dollar}{management.endpoints.web.base-path}/** ${symbol_pound} 不处理 Actuator 的请求
+  access-log: ${symbol_pound} 访问日志的配置项
+    enable: false
+  error-code: ${symbol_pound} 错误码相关配置项
+    enable: false
+  demo: false ${symbol_pound} 关闭演示模式

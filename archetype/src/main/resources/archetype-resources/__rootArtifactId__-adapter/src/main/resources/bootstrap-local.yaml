@@ -1,0 +1,41 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+spring:
+  cloud:
+    nacos:
+      discovery:
+        username: nacos
+        password: Zz2825311647
+        namespace: saltyfish-dev
+        group: DEV_GROUP
+        server-addr: 139.196.255.184:8848
+        watch:
+          enabled: false
+        metadata:
+          version: ${version} ${symbol_pound} 服务实例的版本号，可用于灰度发布
+      ${symbol_pound} 配置中心
+      config:
+        username: nacos
+        password: Zz2825311647
+        namespace: saltyfish-dev
+        server-addr: 139.196.255.184:8848
+        group: DEV_GROUP
+        file-extension: yaml
+        timeout: 60000
+        enabled: true
+        refresh-enabled: true
+        shared-configs[0]:
+          data-id: saltyfish-common.yml
+          group: DEV_GROUP
+          refresh: true
+  sentinel:
+    ${symbol_pound} 是否开启sentinel
+    enabled: true
+    filter:
+       enabled: true
+    ${symbol_pound} 取消Sentinel控制台懒加载
+    eager: true
+    transport:
+       ${symbol_pound}port: @sentinel.port@
+       dashboard: 101.34.28.222:8858
