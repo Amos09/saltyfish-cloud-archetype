@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>${groupId}</groupId>
-    <artifactId>${rootArtifactId}-app</artifactId>
+    <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
     <packaging>jar</packaging>
-    <name>${rootArtifactId}-app</name>
+    <name>${artifactId}</name>
 
     <dependencies>
         <!-- 单元测试 -->
@@ -49,20 +49,20 @@
             <artifactId>sentinel-datasource-nacos</artifactId>
         </dependency>
         <dependency>
-		  <groupId>${groupId}</groupId>
-		  <artifactId>${rootArtifactId}-infrastructure</artifactId>
-		  <version>${project.version}</version>
-		</dependency>
-		<dependency>
-		  <groupId>${groupId}</groupId>
-		  <artifactId>${rootArtifactId}-client</artifactId>
-		  <version>${project.version}</version>
-		</dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-infrastructure</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- RPC 远程调用相关 -->
         <dependency>
-            <groupId>com.saltyfish</groupId>
+            <groupId>${groupId}</groupId>
             <artifactId>saltyfish-cloud-framework-rpc</artifactId>
-            <version>1.0.0</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

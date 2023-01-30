@@ -17,47 +17,6 @@
     <dependencies>
         <dependency>
             <groupId>com.saltyfish</groupId>
-            <artifactId>saltyfish-cloud-framework-env</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <!-- Spring Cloud & Alibaba -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
-        </dependency>
-        <!-- 注册中心 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jsr305</artifactId>
-                    <groupId>com.google.code.findbugs</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-        </dependency>
-        <!-- 配置中心 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-        <!-- Sentinel流量控制、熔断降级 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
-        <!-- Sentinel规则持久化至Nacos配置 -->
-        <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-datasource-nacos</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.saltyfish</groupId>
             <artifactId>saltyfish-cloud-app</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -66,17 +25,7 @@
             <artifactId>saltyfish-cloud-client</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <!-- 监控相关 -->
-        <dependency>
-            <groupId>com.saltyfish</groupId>
-            <artifactId>saltyfish-cloud-framework-monitor</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.saltyfish</groupId>
-            <artifactId>saltyfish-cloud-framework-banner</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+
     </dependencies>
 
     <build>
@@ -86,18 +35,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.6.7</version>
-                <configuration>
-                    <!-- main方法的地址-->
-                    <mainClass>com.saltyfish.ServerStartApplication</mainClass>
-                    <fork>true</fork>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
         <pluginManagement>

@@ -60,20 +60,27 @@
           <includes>
             <include>**/*.java</include>
           </includes>
-          <excludes>
-            <exclude>com/saltyfish/ServerStartApplication.java</exclude>
-          </excludes>
-        </fileSet>
-        <fileSet filtered="true" encoding="UTF-8">
-          <directory>src/main/java</directory>
-          <includes>
-            <include>com/saltyfish/ServerStartApplication.java</include>
-          </includes>
         </fileSet>
         <fileSet packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
           <includes>
             <include>**/*.md</include>
+          </includes>
+        </fileSet>
+        <fileSet encoding="UTF-8">
+          <directory>src/main/resources</directory>
+          <includes>
+            <include>**/*.md</include>
+          </includes>
+        </fileSet>
+      </fileSets>
+    </module>
+    <module id="${__rootArtifactId__}-server" dir="__rootArtifactId__-server" name="${__rootArtifactId__}-server">
+      <fileSets>
+        <fileSet filtered="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
           </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
