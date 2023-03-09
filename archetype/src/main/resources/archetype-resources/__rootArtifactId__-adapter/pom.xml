@@ -13,17 +13,11 @@
     <name>${rootArtifactId}-adapter</name>
 
     <dependencies>
-        <dependency>
+		<dependency>
             <groupId>${groupId}</groupId>
             <artifactId>${rootArtifactId}-app</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>${groupId}</groupId>
-            <artifactId>${rootArtifactId}-client</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
     </dependencies>
 
     <build>

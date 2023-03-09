@@ -1,0 +1,1 @@
+#### ***domain层gateway实现***

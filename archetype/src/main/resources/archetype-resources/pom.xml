@@ -12,14 +12,13 @@
     <packaging>pom</packaging>
 
 	<modules>
-	 <module>${rootArtifactId}-adapter</module>
-	 <module>${rootArtifactId}-app</module>
-	 <module>${rootArtifactId}-client</module>
-	 <module>${rootArtifactId}-infrastructure</module>
-	 <module>${rootArtifactId}-server</module>
-  </modules>
-
-
+		<module>${rootArtifactId}-adapter</module>
+		<module>${rootArtifactId}-app</module>
+		<module>${rootArtifactId}-client</module>
+		<module>${rootArtifactId}-domain</module>
+		<module>${rootArtifactId}-infrastructure</module>
+		<module>${rootArtifactId}-server</module>
+	</modules>
     <build>
         <finalName>${project.artifactId}</finalName>
         <extensions>
