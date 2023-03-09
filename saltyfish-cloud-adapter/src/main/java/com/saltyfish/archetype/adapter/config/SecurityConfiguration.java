@@ -1,4 +1,4 @@
-package com.saltyfish.archetype.config;
+package com.saltyfish.archetype.adapter.config;
 
 import com.saltyfish.archetype.infrastructure.constant.ApiConstants;
 import com.saltyfish.framework.security.config.AuthorizeRequestsCustomizer;

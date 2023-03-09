@@ -9,28 +9,27 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.saltyfish</groupId>
-    <artifactId>saltyfish-cloud-adapter</artifactId>
+    <artifactId>saltyfish-cloud-domain</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>saltyfish-cloud-adapter</name>
+    <name>saltyfish-cloud-domain</name>
 
     <dependencies>
         <dependency>
             <groupId>com.saltyfish</groupId>
-            <artifactId>saltyfish-cloud-app</artifactId>
+            <artifactId>saltyfish-cloud-framework-common</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <!-- 参数校验 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.6.7</version>
-            </plugin>
-        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -107,4 +106,5 @@
             </plugins>
         </pluginManagement>
     </build>
+
 </project>

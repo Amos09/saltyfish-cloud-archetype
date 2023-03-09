@@ -19,6 +19,7 @@
         <module>saltyfish-cloud-app</module>
         <module>saltyfish-cloud-adapter</module>
         <module>saltyfish-cloud-server</module>
+        <module>saltyfish-cloud-domain</module>
     </modules>
 
     <build>
