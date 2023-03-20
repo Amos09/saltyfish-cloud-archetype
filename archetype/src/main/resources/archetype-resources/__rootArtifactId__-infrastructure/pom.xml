@@ -7,10 +7,10 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>${groupId}</groupId>
-  <artifactId>${rootArtifactId}-infrastructure</artifactId>
+  <artifactId>${artifactId}</artifactId>
   <version>${version}</version>
   <packaging>jar</packaging>
-  <name>${rootArtifactId}-infrastructure</name>
+  <name>${artifactId}</name>
 
   <dependencies>
     <dependency>

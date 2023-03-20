@@ -1,10 +1,7 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-package ${package}.adapter.config;
+package com.saltyfish.archetype.server.config;
 
-import ${package}.infrastructure.constant.ApiConstants;
-import ${groupId}.framework.security.config.AuthorizeRequestsCustomizer;
+import com.saltyfish.archetype.infrastructure.constant.ApiConstants;
+import com.saltyfish.framework.security.config.AuthorizeRequestsCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

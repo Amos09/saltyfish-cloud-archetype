@@ -1,10 +1,7 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-package ${package}.infrastructure.enums;
+package com.saltyfish.archetype.domain.enums;
 
 
-import ${groupId}.framework.common.exception.IResultCode;
+import com.saltyfish.framework.common.exception.IResultCode;
 import lombok.AllArgsConstructor;
 
 /**

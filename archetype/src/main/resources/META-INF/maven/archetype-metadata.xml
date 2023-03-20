@@ -11,7 +11,7 @@
     </fileSet>
   </fileSets>
   <modules>
-    <module id="${__rootArtifactId__}-infrastructure" dir="__rootArtifactId__-infrastructure" name="${__rootArtifactId__}-infrastructure">
+    <module id="${rootArtifactId}-infrastructure" dir="__rootArtifactId__-infrastructure" name="${rootArtifactId}-infrastructure">
       <fileSets>
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
@@ -33,7 +33,7 @@
         </fileSet>
       </fileSets>
     </module>
-    <module id="${__rootArtifactId__}-client" dir="__rootArtifactId__-client" name="${__rootArtifactId__}-client">
+    <module id="${rootArtifactId}-client" dir="__rootArtifactId__-client" name="${rootArtifactId}-client">
       <fileSets>
         <fileSet packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
@@ -43,7 +43,7 @@
         </fileSet>
       </fileSets>
     </module>
-    <module id="${__rootArtifactId__}-app" dir="__rootArtifactId__-app" name="${__rootArtifactId__}-app">
+    <module id="${rootArtifactId}-app" dir="__rootArtifactId__-app" name="${rootArtifactId}-app">
       <fileSets>
         <fileSet packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
@@ -53,14 +53,8 @@
         </fileSet>
       </fileSets>
     </module>
-    <module id="${__rootArtifactId__}-adapter" dir="__rootArtifactId__-adapter" name="${__rootArtifactId__}-adapter">
+    <module id="${rootArtifactId}-adapter" dir="__rootArtifactId__-adapter" name="${rootArtifactId}-adapter">
       <fileSets>
-        <fileSet filtered="true" packaged="true" encoding="UTF-8">
-          <directory>src/main/java</directory>
-          <includes>
-            <include>**/*.java</include>
-          </includes>
-        </fileSet>
         <fileSet packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
           <includes>
@@ -75,12 +69,21 @@
         </fileSet>
       </fileSets>
     </module>
-    <module id="${__rootArtifactId__}-server" dir="__rootArtifactId__-server" name="${__rootArtifactId__}-server">
+    <module id="${rootArtifactId}-server" dir="__rootArtifactId__-server" name="${rootArtifactId}-server">
       <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+          <excludes>
+            <exclude>com/saltyfish/ServerStartApplication.java</exclude>
+          </excludes>
+        </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
           <directory>src/main/java</directory>
           <includes>
-            <include>**/*.java</include>
+            <include>com/saltyfish/ServerStartApplication.java</include>
           </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
@@ -92,8 +95,14 @@
         </fileSet>
       </fileSets>
     </module>
-    <module id="${__rootArtifactId__}-domain" dir="__rootArtifactId__-domain" name="${__rootArtifactId__}-domain">
+    <module id="${rootArtifactId}-domain" dir="__rootArtifactId__-domain" name="${rootArtifactId}-domain">
       <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </fileSet>
         <fileSet packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
           <includes>

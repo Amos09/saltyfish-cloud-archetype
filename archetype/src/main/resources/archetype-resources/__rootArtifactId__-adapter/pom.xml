@@ -7,13 +7,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>${groupId}</groupId>
-    <artifactId>${rootArtifactId}-adapter</artifactId>
+    <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
     <packaging>jar</packaging>
-    <name>${rootArtifactId}-adapter</name>
+    <name>${artifactId}</name>
 
     <dependencies>
-		<dependency>
+        <dependency>
             <groupId>${groupId}</groupId>
             <artifactId>${rootArtifactId}-app</artifactId>
             <version>${project.version}</version>

@@ -1,7 +1,10 @@
-package com.saltyfish.archetype.adapter.config;
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+package ${package}.server.config;
 
-import com.saltyfish.archetype.infrastructure.constant.ApiConstants;
-import com.saltyfish.framework.security.config.AuthorizeRequestsCustomizer;
+import ${package}.infrastructure.constant.ApiConstants;
+import ${groupId}.framework.security.config.AuthorizeRequestsCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -7,17 +7,22 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>${groupId}</groupId>
-  <artifactId>${rootArtifactId}-server</artifactId>
+  <artifactId>${artifactId}</artifactId>
   <version>${version}</version>
   <packaging>jar</packaging>
-  <name>${rootArtifactId}-server</name>
-
+  <name>${artifactId}</name>
   <dependencies>
-	<dependency>
+    <dependency>
       <groupId>${groupId}</groupId>
       <artifactId>${rootArtifactId}-adapter</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>${groupId}</groupId>
+      <artifactId>${rootArtifactId}-client</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>com.saltyfish</groupId>
       <artifactId>saltyfish-cloud-framework-env</artifactId>

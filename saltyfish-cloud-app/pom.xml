@@ -15,6 +15,16 @@
     <name>saltyfish-cloud-app</name>
 
     <dependencies>
+        <dependency>
+            <groupId>com.saltyfish</groupId>
+            <artifactId>saltyfish-cloud-infrastructure</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.saltyfish</groupId>
+            <artifactId>saltyfish-cloud-client</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <!-- 单元测试 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -49,16 +59,6 @@
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-datasource-nacos</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.saltyfish</groupId>
-            <artifactId>saltyfish-cloud-infrastructure</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.saltyfish</groupId>
-            <artifactId>saltyfish-cloud-client</artifactId>
-            <version>1.0.0</version>
         </dependency>
         <!-- RPC 远程调用相关 -->
         <dependency>

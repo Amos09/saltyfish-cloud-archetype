@@ -16,11 +16,12 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 @SaltyfishEnableFeignClients
 public class ServerStartApplication {
-
+    
     private static final Logger logger = LoggerFactory.getLogger(ServerStartApplication.class);
     
     public static void main(String[] args) {
         ConfigurableApplicationContext run = SpringApplication.run(ServerStartApplication.class, args);
-        logger.info( run.getEnvironment().getProperty("spring.application.name") + " 服务启动成功; 端口号: " + run.getEnvironment().getProperty("server.port"));
+        logger.info("{} 服务启动成功; 端口号: {}", run.getEnvironment().getProperty("spring.application.name"),
+                run.getEnvironment().getProperty("server.port"));
     }
 }

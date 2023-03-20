@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 spring:
   application:
-    name: system-server
+    name: archetyps-server
 
   profiles:
     active: local
