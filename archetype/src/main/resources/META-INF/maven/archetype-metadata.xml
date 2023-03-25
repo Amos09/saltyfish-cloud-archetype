@@ -31,6 +31,12 @@
             <include>**/*.md</include>
           </includes>
         </fileSet>
+        <fileSet encoding="UTF-8">
+          <directory></directory>
+          <includes>
+            <include>README.md</include>
+          </includes>
+        </fileSet>
       </fileSets>
     </module>
     <module id="${rootArtifactId}-client" dir="__rootArtifactId__-client" name="${rootArtifactId}-client">
@@ -41,6 +47,12 @@
             <include>**/*.md</include>
           </includes>
         </fileSet>
+        <fileSet encoding="UTF-8">
+          <directory></directory>
+          <includes>
+            <include>README.md</include>
+          </includes>
+        </fileSet>
       </fileSets>
     </module>
     <module id="${rootArtifactId}-app" dir="__rootArtifactId__-app" name="${rootArtifactId}-app">
@@ -49,6 +61,12 @@
           <directory>src/main/java</directory>
           <includes>
             <include>**/*.md</include>
+          </includes>
+        </fileSet>
+        <fileSet encoding="UTF-8">
+          <directory></directory>
+          <includes>
+            <include>README.md</include>
           </includes>
         </fileSet>
       </fileSets>
@@ -65,6 +83,12 @@
           <directory>src/main/resources</directory>
           <includes>
             <include>**/*.md</include>
+          </includes>
+        </fileSet>
+        <fileSet encoding="UTF-8">
+          <directory></directory>
+          <includes>
+            <include>README.md</include>
           </includes>
         </fileSet>
       </fileSets>
@@ -107,6 +131,12 @@
           <directory>src/main/java</directory>
           <includes>
             <include>**/*.md</include>
+          </includes>
+        </fileSet>
+        <fileSet encoding="UTF-8">
+          <directory></directory>
+          <includes>
+            <include>README.md</include>
           </includes>
         </fileSet>
       </fileSets>
