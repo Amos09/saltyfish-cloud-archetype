@@ -1,37 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <parent>
         <groupId>com.saltyfish</groupId>
-        <artifactId>saltyfish-cloud-framework</artifactId>
+        <artifactId>saltyfish-cloud-archetype</artifactId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.saltyfish</groupId>
-    <artifactId>saltyfish-cloud-archetype</artifactId>
+    <artifactId>saltyfish-cloud-integration</artifactId>
+    <packaging>jar</packaging>
     <version>1.0.0</version>
-    <packaging>pom</packaging>
+    <name>saltyfish-cloud-integration</name>
 
-    <modules>
-        <module>saltyfish-cloud-infrastructure</module>
-        <module>saltyfish-cloud-client</module>
-        <module>saltyfish-cloud-app</module>
-        <module>saltyfish-cloud-adapter</module>
-        <module>saltyfish-cloud-server</module>
-        <module>saltyfish-cloud-domain</module>
-        <module>saltyfish-cloud-integration</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>com.saltyfish</groupId>
+            <artifactId>saltyfish-cloud-framework-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- RPC 远程调用相关 -->
+        <dependency>
+            <groupId>com.saltyfish</groupId>
+            <artifactId>saltyfish-cloud-framework-rpc</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+        <!-- openfeign依赖 1. http客户端选择okhttp 2. loadbalancer替换ribbon -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.archetype</groupId>
-                <artifactId>archetype-packaging</artifactId>
-                <version>3.1.1</version>
-            </extension>
-        </extensions>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -65,6 +75,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.2</version>
                     <configuration>
                         <encoding>UTF-8</encoding>
                     </configuration>
@@ -76,13 +87,8 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.0.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M5</version>
+                    <version>2.22.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
