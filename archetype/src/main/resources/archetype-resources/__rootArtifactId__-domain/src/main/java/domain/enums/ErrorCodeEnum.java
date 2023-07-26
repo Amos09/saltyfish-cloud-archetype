@@ -4,7 +4,7 @@
 package ${package}.domain.enums;
 
 
-import com.saltyfish.framework.common.exception.IResultCode;
+import ${groupId}.framework.common.exception.IResultCode;
 import lombok.AllArgsConstructor;
 
 /**
