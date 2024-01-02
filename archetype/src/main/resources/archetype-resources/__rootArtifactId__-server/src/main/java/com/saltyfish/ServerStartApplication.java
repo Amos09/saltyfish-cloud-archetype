@@ -3,7 +3,6 @@
 #set( $symbol_escape = '\' )
 package ${groupId};
 
-import ${groupId}.framework.feign.annotation.SaltyfishEnableFeignClients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -17,7 +16,6 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @description: 服务启动入口
  */
 @SpringBootApplication
-@SaltyfishEnableFeignClients
 public class ServerStartApplication {
     
     private static final Logger logger = LoggerFactory.getLogger(ServerStartApplication.class);
