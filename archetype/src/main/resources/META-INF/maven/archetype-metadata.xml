@@ -13,12 +13,6 @@
   <modules>
     <module id="${rootArtifactId}-infrastructure" dir="__rootArtifactId__-infrastructure" name="${rootArtifactId}-infrastructure">
       <fileSets>
-        <fileSet filtered="true" packaged="true" encoding="UTF-8">
-          <directory>src/main/java</directory>
-          <includes>
-            <include>**/*.java</include>
-          </includes>
-        </fileSet>
         <fileSet packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
           <includes>
@@ -41,6 +35,12 @@
     </module>
     <module id="${rootArtifactId}-client" dir="__rootArtifactId__-client" name="${rootArtifactId}-client">
       <fileSets>
+        <fileSet filtered="true" packaged="true" encoding="UTF-8">
+          <directory>src/main/java</directory>
+          <includes>
+            <include>**/*.java</include>
+          </includes>
+        </fileSet>
         <fileSet packaged="true" encoding="UTF-8">
           <directory>src/main/java</directory>
           <includes>

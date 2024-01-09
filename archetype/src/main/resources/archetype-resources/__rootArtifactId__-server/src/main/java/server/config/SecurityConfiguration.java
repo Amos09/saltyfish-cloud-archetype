@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.server.config;
 
-import ${package}.infrastructure.constant.ApiConstants;
+import ${package}.client.constant.ApiConstants;
 import ${groupId}.framework.security.config.AuthorizeRequestsCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

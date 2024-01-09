@@ -1,13 +1,12 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
---- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 数据库相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
 spring:
-
   ${symbol_pound} 数据源配置项
   autoconfigure:
     exclude:
       - com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure ${symbol_pound} 排除 Druid 的自动配置，使用 dynamic-datasource-spring-boot-starter 配置多数据源
+      - de.codecentric.boot.admin.client.config.SpringBootAdminClientAutoConfiguration ${symbol_pound} 禁用 Spring Boot Admin 的 Client 的自动配置
   datasource:
     druid: ${symbol_pound} Druid 【监控】相关的全局配置
       web-stat-filter:
@@ -43,47 +42,38 @@ spring:
       primary: master
       datasource:
         master:
-          name: saltyfish
-          url: jdbc:mysql://81.68.173.122:7158/${symbol_dollar}{spring.datasource.dynamic.datasource.master.name}?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&nullCatalogMeansCurrent=true ${symbol_pound} MySQL Connector/J 8.X 连接的示例
-          ${symbol_pound}          url: jdbc:mysql://127.0.0.1:3306/${symbol_dollar}{spring.datasource.dynamic.datasource.master.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT ${symbol_pound} MySQL Connector/J 5.X 连接的示例
-          ${symbol_pound}          url: jdbc:postgresql://127.0.0.1:5432/${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name} ${symbol_pound} PostgreSQL 连接的示例
-          ${symbol_pound}          url: jdbc:oracle:thin:@127.0.0.1:1521:xe ${symbol_pound} Oracle 连接的示例
-          ${symbol_pound}          url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=${symbol_dollar}{spring.datasource.dynamic.datasource.master.name} ${symbol_pound} SQLServer 连接的示例
-          username: amos_saltyfish
-          password: amos0905saltyfish
-        ${symbol_pound}          username: sa
-        ${symbol_pound}          password: JSm:g(*%lU4ZAkz06cd52KqT3)i1?H7W
+          name: saltyfish-boot
+          url: jdbc:mysql://127.0.0.1:3306/${symbol_dollar}{spring.datasource.dynamic.datasource.master.name}?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&nullCatalogMeansCurrent=true ${symbol_pound} MySQL Connector/J 8.X 连接的示例
+          username: root
+          password: amos0917
         slave: ${symbol_pound} 模拟从库，可根据自己需要修改
-          name: saltyfish
-          url: jdbc:mysql://81.68.173.122:7158/${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name}?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&nullCatalogMeansCurrent=true ${symbol_pound} MySQL Connector/J 8.X 连接的示例
-          ${symbol_pound}          url: jdbc:mysql://127.0.0.1:3306/${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name}?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=CTT ${symbol_pound} MySQL Connector/J 5.X 连接的示例
-          ${symbol_pound}          url: jdbc:postgresql://127.0.0.1:5432/${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name} ${symbol_pound} PostgreSQL 连接的示例
-          ${symbol_pound}          url: jdbc:oracle:thin:@127.0.0.1:1521:xe ${symbol_pound} Oracle 连接的示例
-          ${symbol_pound}          url: jdbc:sqlserver://127.0.0.1:1433;DatabaseName=${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name} ${symbol_pound} SQLServer 连接的示例
-          username: amos_saltyfish
-          password: amos0905saltyfish
-  ${symbol_pound}          username: sa
-  ${symbol_pound}          password: JSm:g(*%lU4ZAkz06cd52KqT3)i1?H7W
+          name: saltyfish-boot
+          url: jdbc:mysql://127.0.0.1:3306/${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name}?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&nullCatalogMeansCurrent=true ${symbol_pound} MySQL Connector/J 8.X 连接的示例
+          username: root
+          password: amos0917
 
   ${symbol_pound} Redis 配置。Redisson 默认的配置足够使用，一般不需要进行调优
   redis:
-    host: 81.68.173.122 ${symbol_pound} 地址
-    port: 8369 ${symbol_pound} 端口
+    host: 127.0.0.1 ${symbol_pound} 地址
+    port: 9736 ${symbol_pound} 端口
     database: 0 ${symbol_pound} 数据库索引
     password: Zz2825311647 ${symbol_pound} 密码，建议生产环境开启
 
-jasypt:
-  encryptor:
-    password: yuanma ${symbol_pound} 加解密的秘钥
-
 --- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} MQ 消息队列相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
+${symbol_pound} rocketmq 配置项，对应 RocketMQProperties 配置类
+rocketmq:
+  name-server: 127.0.0.1:9876 ${symbol_pound} RocketMQ Namesrv
+
 spring:
-  cloud:
-    stream:
-      rocketmq:
-        ${symbol_pound} RocketMQ Binder 配置项，对应 RocketMQBinderConfigurationProperties 类
-        binder:
-          name-server: 81.68.173.122:9876 ${symbol_pound} RocketMQ Namesrv 地址
+  ${symbol_pound} RabbitMQ 配置项，对应 RabbitProperties 配置类
+  rabbitmq:
+    host: 127.0.0.1 ${symbol_pound} RabbitMQ 服务的地址
+    port: 5672 ${symbol_pound} RabbitMQ 服务的端口
+    username: guest ${symbol_pound} RabbitMQ 服务的账号
+    password: guest ${symbol_pound} RabbitMQ 服务的密码
+  ${symbol_pound} Kafka 配置项，对应 KafkaProperties 配置类
+  kafka:
+    bootstrap-servers: 127.0.0.1:9092 ${symbol_pound} 指定 Kafka Broker 地址，可以设置多个，以逗号分隔
 
 --- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 定时任务相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
 xxl:
@@ -114,11 +104,8 @@ spring:
     admin:
       ${symbol_pound} Spring Boot Admin Client 客户端的相关配置
       client:
-        url: http://127.0.0.1:${symbol_dollar}{server.port}/${symbol_dollar}{spring.boot.admin.context-path} ${symbol_pound} 设置 Spring Boot Admin Server 地址
         instance:
           service-host-type: IP ${symbol_pound} 注册实例时，优先使用 IP [IP, HOST_NAME, CANONICAL_HOST_NAME]
-      ${symbol_pound} Spring Boot Admin Server 服务端的相关配置
-      context-path: /admin ${symbol_pound} 配置 Spring
 
 ${symbol_pound} 日志文件配置
 logging:
@@ -128,7 +115,7 @@ logging:
 
 --- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
 
-${symbol_pound} 芋道配置项，设置当前项目所有自定义的配置
+${symbol_pound} 配置项，设置当前项目所有自定义的配置
 saltyfish:
   env: ${symbol_pound} 多环境的配置项
     tag: ${symbol_dollar}{HOSTNAME}

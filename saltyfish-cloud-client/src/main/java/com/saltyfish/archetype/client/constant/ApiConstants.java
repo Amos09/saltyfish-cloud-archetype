@@ -1,4 +1,4 @@
-package com.saltyfish.archetype.infrastructure.constant;
+package com.saltyfish.archetype.client.constant;
 
 
 import com.saltyfish.framework.common.constant.RpcConstants;

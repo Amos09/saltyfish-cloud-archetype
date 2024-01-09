@@ -43,19 +43,7 @@ ${symbol_pound}      id-type: INPUT ${symbol_pound} 用户输入 ID，适合 Ora
 ${symbol_pound}      id-type: ASSIGN_ID ${symbol_pound} 分配 ID，默认使用雪花算法。注意，Oracle、PostgreSQL、Kingbase、DB2、H2 数据库时，需要去除实体类上的 @KeySequence 注解
       logic-delete-value: 1 ${symbol_pound} 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 ${symbol_pound} 逻辑未删除值(默认为 0)
-  type-aliases-package: ${symbol_dollar}{saltyfish.info.base-package}.domain
-
---- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} RPC 远程调用相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
-dubbo:
-  scan:
-    base-packages: ${symbol_dollar}{saltyfish.info.base-package}.api ${symbol_pound} 指定 Dubbo 服务实现类的扫描基准包
-  protocol:
-    name: dubbo ${symbol_pound} 协议名称
-    port: -1 ${symbol_pound} 协议端口，-1 表示自增端口，从 20880 开始
-  registry:
-    address: spring-cloud://localhost ${symbol_pound} 设置使用 Spring Cloud 注册中心
-  application:
-    id: infra-server
+  type-aliases-package: ${symbol_dollar}{saltyfish.info.base-package}.infrastructure.entity
 
 ${symbol_pound} feign调用超时时间配置
 feign:
@@ -70,34 +58,38 @@ feign:
         readTimeout: 600000
 --- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} MQ 消息队列相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
 
+${symbol_pound} Spring Data Redis 配置
 spring:
-  cloud:
-    ${symbol_pound} Spring Cloud Stream 配置项，对应 BindingServiceProperties 类
-    stream:
-      ${symbol_pound}      function:
-      ${symbol_pound}        definition: roleRefreshConsumer;roleMenuRefreshConsumer;userRoleRefreshConsumer;
-      ${symbol_pound} Binding 配置项，对应 BindingProperties Map
-      bindings:
-        roleRefresh-out-0:
-          destination: system_role_refresh
-        roleRefreshConsumer-in-0:
-          destination: system_role_refresh
-          group: system_role_refresh_consumer_group
-      ${symbol_pound} Spring Cloud Stream RocketMQ 配置项
-      rocketmq:
-        ${symbol_pound} RocketMQ Binder 配置项，对应 RocketMQBinderConfigurationProperties 类
-        binder:
-          name-server: 127.0.0.1:9876 ${symbol_pound} RocketMQ Namesrv 地址
-        default: ${symbol_pound} 默认 bindings 全局配置
-          producer: ${symbol_pound} RocketMQ Producer 配置项，对应 RocketMQProducerProperties 类
-            group: infra_producer_group ${symbol_pound} 生产者分组
-            send-type: SYNC ${symbol_pound} 发送模式，SYNC 同步
+  data:
+    redis:
+      repositories:
+        enabled: false ${symbol_pound} 项目未使用到 Spring Data Redis 的 Repository，所以直接禁用，保证启动速度
 
-    ${symbol_pound} Spring Cloud Bus 配置项，对应 BusProperties 类
-    bus:
-      enabled: true ${symbol_pound} 是否开启，默认为 true
-      id: ${symbol_dollar}{spring.application.name}:${symbol_dollar}{server.port} ${symbol_pound} 编号，Spring Cloud Alibaba 建议使用“应用:端口”的格式
-      destination: springCloudBus ${symbol_pound} 目标消息队列，默认为 springCloudBus
+--- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 消息队列相关 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
+
+${symbol_pound} rocketmq 配置项，对应 RocketMQProperties 配置类
+rocketmq:
+  ${symbol_pound} Producer 配置项
+  producer:
+    group: ${symbol_dollar}{spring.application.name}_PRODUCER ${symbol_pound} 生产者分组
+
+spring:
+  ${symbol_pound} Kafka 配置项，对应 KafkaProperties 配置类
+  kafka:
+    ${symbol_pound} Kafka Producer 配置项
+    producer:
+      acks: 1 ${symbol_pound} 0-不应答。1-leader 应答。all-所有 leader 和 follower 应答。
+      retries: 3 ${symbol_pound} 发送失败时，重试发送的次数
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer ${symbol_pound} 消息的 value 的序列化
+    ${symbol_pound} Kafka Consumer 配置项
+    consumer:
+      auto-offset-reset: earliest ${symbol_pound} 设置消费者分组最初的消费进度为 earliest 。可参考博客 https://blog.csdn.net/lishuangzhe7047/article/details/74530417 理解
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
+    ${symbol_pound} Kafka Consumer Listener 监听器配置
+    listener:
+      missing-topics-fatal: false ${symbol_pound} 消费监听接口监听的主题不存在时，默认会报错。所以通过设置为 false ，解决报错
 
 --- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 定时任务相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
 
@@ -116,33 +108,17 @@ saltyfish:
     base-package: ${package}
   web:
     admin-ui:
-      url: http://dashboard.yudao.iocoder.cn ${symbol_pound} Admin 管理后台 UI 的地址
+      url: http://www.baidu.com ${symbol_pound} Admin 管理后台 UI 的地址
   swagger:
     title: 管理后台
     description: 提供管理员管理的所有功能
     version: ${symbol_dollar}{saltyfish.info.version}
     base-package: ${symbol_dollar}{saltyfish.info.base-package}
-  codegen:
-    base-package: ${symbol_dollar}{saltyfish.info.base-package}
-    db-schemas: ${symbol_dollar}{spring.datasource.dynamic.datasource.master.name}
-  error-code: ${symbol_pound} 错误码相关配置项
-    constants-class-list:
-      - ${package}.app.enums.ErrorCodeEnum
   tenant: ${symbol_pound} 多租户相关配置项
     enable: true
     ignore-urls:
       - /remote-api/infra/file/*/get/** ${symbol_pound} 获取图片，和租户无关
     ignore-tables:
       - infra_codegen_column
-      - infra_codegen_table
-      - infra_test_demo
-      - infra_config
-      - infra_file_config
-      - infra_file
-      - infra_file_content
-      - infra_job
-      - infra_job_log
-      - infra_job_log
-      - infra_data_source_config
 
 debug: false

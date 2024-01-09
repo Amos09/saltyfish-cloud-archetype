@@ -13,57 +13,32 @@
     <name>${artifactId}</name>
 
     <dependencies>
+
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-integration</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>${groupId}</groupId>
             <artifactId>${rootArtifactId}-infrastructure</artifactId>
             <version>${project.version}</version>
         </dependency>
+
         <dependency>
             <groupId>${groupId}</groupId>
             <artifactId>${rootArtifactId}-client</artifactId>
             <version>${project.version}</version>
         </dependency>
+
         <!-- 单元测试 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- Spring Cloud & Alibaba -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-        </dependency>
-        <!-- openfeign依赖 1. http客户端选择okhttp 2. loadbalancer替换ribbon -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-okhttp</artifactId>
-        </dependency>
-        <!-- Sentinel流量控制、熔断降级 -->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
-        <!-- Sentinel规则持久化至Nacos配置 -->
-        <dependency>
-            <groupId>com.alibaba.csp</groupId>
-            <artifactId>sentinel-datasource-nacos</artifactId>
-        </dependency>
-        <!-- RPC 远程调用相关 -->
-        <dependency>
-            <groupId>com.saltyfish</groupId>
-            <artifactId>saltyfish-cloud-framework-rpc</artifactId>
-            <version>1.0.0</version>
-        </dependency>
     </dependencies>
 
     <build>

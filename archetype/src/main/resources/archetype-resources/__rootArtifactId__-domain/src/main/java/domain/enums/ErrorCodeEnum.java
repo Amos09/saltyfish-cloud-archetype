@@ -16,6 +16,7 @@ public enum ErrorCodeEnum implements IResultCode {
     SUCCESS(200, "操作成功"),
     SYSTEM_ERROR(500, "系统异常"),
     CONFIG_NOT_EXISTS(1001000001, "参数配置不存在"),
+    DATA_NOT_EXISTS(401, "数据不存在!"),
 
     ;
 
