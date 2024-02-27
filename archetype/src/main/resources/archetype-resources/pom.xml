@@ -12,8 +12,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>${rootArtifactId}-integration</module>
         <module>${rootArtifactId}-domain</module>
+        <module>${rootArtifactId}-integration</module>
         <module>${rootArtifactId}-infrastructure</module>
         <module>${rootArtifactId}-client</module>
         <module>${rootArtifactId}-app</module>

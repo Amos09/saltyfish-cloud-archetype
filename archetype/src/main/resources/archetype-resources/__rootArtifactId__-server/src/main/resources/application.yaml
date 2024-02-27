@@ -30,6 +30,22 @@ spring:
     redis:
       time-to-live: 1h ${symbol_pound} 设置过期时间为 1 小时
 
+--- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 接口文档配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
+
+springdoc:
+  api-docs:
+    enabled: true ${symbol_pound} 1. 是否开启 Swagger 接文档的元数据
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true ${symbol_pound} 2.1 是否开启 Swagger 文档的官方 UI 界面
+    path: /swagger-ui.html
+  default-flat-param-object: true ${symbol_pound} 参见 https://doc.xiaominfo.com/docs/faq/v4/knife4j-parameterobject-flat-param 文档
+
+knife4j:
+  enable: true ${symbol_pound} 2.2 是否开启 Swagger 文档的 Knife4j UI 界面
+  setting:
+    language: zh_cn
+
 ${symbol_pound} MyBatis Plus 的配置项
 mybatis-plus:
   configuration:
@@ -44,6 +60,11 @@ ${symbol_pound}      id-type: ASSIGN_ID ${symbol_pound} 分配 ID，默认使用
       logic-delete-value: 1 ${symbol_pound} 逻辑已删除值(默认为 1)
       logic-not-delete-value: 0 ${symbol_pound} 逻辑未删除值(默认为 0)
   type-aliases-package: ${symbol_dollar}{saltyfish.info.base-package}.infrastructure.entity
+  encryptor:
+    password: XDV71a+xqStEA3WH ${symbol_pound} 加解密的秘钥，可使用 https://www.imaegoo.com/2020/aes-key-generator/ 网站生成
+
+mybatis-plus-join:
+    banner: false ${symbol_pound} 关闭控制台的 Banner 打印
 
 ${symbol_pound} feign调用超时时间配置
 feign:
