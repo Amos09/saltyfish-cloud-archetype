@@ -3,7 +3,6 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.constant;
 
-
 import ${groupId}.framework.common.constant.RpcConstants;
 
 /**
@@ -11,15 +10,15 @@ import ${groupId}.framework.common.constant.RpcConstants;
  */
 public class ApiConstants {
 
-    /**
-     * 服务名
-     *
-     * 注意，需要保证和 spring.application.name 保持一致
-     */
-    public static final String NAME = "archetype-server";
+	/**
+	 * 服务名
+	 *
+	 * 注意，需要保证和 spring.application.name 保持一致
+	 */
+	public static final String NAME = "archetype-server";
 
-    public static final String PREFIX = RpcConstants.RPC_API_PREFIX +  "/archetype";
+	public static final String PREFIX = RpcConstants.RPC_API_PREFIX + "/archetype";
 
-    public static final String VERSION = "${version}";
+	public static final String VERSION = "${version}";
 
 }
