@@ -4,6 +4,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <fileSets>
     <fileSet filtered="true" encoding="UTF-8">
+      <directory>docs/dev-ops</directory>
+      <includes>
+        <include>**/*.txt</include>
+        <include>**/*.xml</include>
+        <include>**/*.yml</include>
+        <include>**/*.properties</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
       <directory>.etc/checkstyle</directory>
       <includes>
         <include>**/*.xml</include>
@@ -13,6 +22,15 @@
       <directory>.mvn</directory>
       <includes>
         <include>**/*.config</include>
+      </includes>
+    </fileSet>
+    <fileSet encoding="UTF-8">
+      <directory>docs/dev-ops</directory>
+      <includes>
+        <include>**/*.</include>
+        <include>**/*.sh</include>
+        <include>**/*.conf</include>
+        <include>**/*.sql</include>
       </includes>
     </fileSet>
     <fileSet encoding="UTF-8">

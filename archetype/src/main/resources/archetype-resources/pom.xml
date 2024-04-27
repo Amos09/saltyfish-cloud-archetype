@@ -22,7 +22,6 @@
         <module>${rootArtifactId}-server</module>
     </modules>
 
-
     <build>
         <finalName>${project.artifactId}</finalName>
         <extensions>
