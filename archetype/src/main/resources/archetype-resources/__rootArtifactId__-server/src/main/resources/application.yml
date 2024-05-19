@@ -126,7 +126,7 @@ xxl:
 saltyfish:
   info:
     version: ${version}
-    base-package: ${package}
+    base-package: ${package}.archetype
   web:
     admin-ui:
       url: http://www.baidu.com ${symbol_pound} Admin 管理后台 UI 的地址

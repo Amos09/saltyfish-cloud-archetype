@@ -1,6 +1,6 @@
-package com.saltyfish.archetype.server.config;
+package com.saltyfish.server.config;
 
-import com.saltyfish.archetype.client.constant.ApiConstants;
+import com.saltyfish.client.constant.ApiConstants;
 import com.saltyfish.framework.security.config.AuthorizeRequestsCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

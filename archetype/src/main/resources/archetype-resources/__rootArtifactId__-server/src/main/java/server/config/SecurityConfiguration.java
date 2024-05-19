@@ -4,7 +4,7 @@
 package ${package}.server.config;
 
 import ${package}.client.constant.ApiConstants;
-import ${groupId}.framework.security.config.AuthorizeRequestsCustomizer;
+import com.saltyfish.framework.security.config.AuthorizeRequestsCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

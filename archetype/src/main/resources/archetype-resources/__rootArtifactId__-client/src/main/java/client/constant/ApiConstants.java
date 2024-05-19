@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.constant;
 
-import ${groupId}.framework.common.constant.RpcConstants;
+import com.saltyfish.framework.common.constant.RpcConstants;
 
 /**
  * API 相关的枚举

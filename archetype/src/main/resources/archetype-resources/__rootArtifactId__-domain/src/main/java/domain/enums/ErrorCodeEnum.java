@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.domain.enums;
 
-import ${groupId}.framework.common.exception.IResultCode;
+import com.saltyfish.framework.common.exception.IResultCode;
 import lombok.AllArgsConstructor;
 
 /**

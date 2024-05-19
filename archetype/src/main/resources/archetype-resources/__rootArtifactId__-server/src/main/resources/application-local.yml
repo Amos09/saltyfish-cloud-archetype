@@ -45,12 +45,12 @@ spring:
           name: saltyfish-boot
           url: jdbc:mysql://127.0.0.1:3306/${symbol_dollar}{spring.datasource.dynamic.datasource.master.name}?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&nullCatalogMeansCurrent=true ${symbol_pound} MySQL Connector/J 8.X 连接的示例
           username: root
-          password: amos0917
+          password: root0917
         slave: ${symbol_pound} 模拟从库，可根据自己需要修改
           name: saltyfish-boot
           url: jdbc:mysql://127.0.0.1:3306/${symbol_dollar}{spring.datasource.dynamic.datasource.slave.name}?allowMultiQueries=true&useUnicode=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&nullCatalogMeansCurrent=true ${symbol_pound} MySQL Connector/J 8.X 连接的示例
           username: root
-          password: amos0917
+          password: root0917
 
   ${symbol_pound} Redis 配置。Redisson 默认的配置足够使用，一般不需要进行调优
   redis:
@@ -111,7 +111,7 @@ ${symbol_pound} 日志文件配置
 logging:
   level:
     ${symbol_pound} 配置自己写的 MyBatis Mapper 打印日志
-    ${groupId}.infra.mapper: debug
+    ${package}.infra.mapper: debug
 
 --- ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound} 相关配置 ${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}
 
@@ -121,11 +121,13 @@ saltyfish:
     tag: ${symbol_dollar}{HOSTNAME}
   security:
     mock-enable: false
-  xss:
-    enable: false
-    exclude-urls: ${symbol_pound} 如下两个 url，仅仅是为了演示，去掉配置也没关系
-      - ${symbol_dollar}{spring.boot.admin.context-path}/** ${symbol_pound} 不处理 Spring Boot Admin 的请求
-      - ${symbol_dollar}{management.endpoints.web.base-path}/** ${symbol_pound} 不处理 Actuator 的请求
+    xss:
+      enabled: true
+      includePaths:
+        - www.baidu.com/**
+      excludePaths:
+        - ${symbol_dollar}{spring.boot.admin.context-path}/** ${symbol_pound} 不处理 Spring Boot Admin 的请求
+        - ${symbol_dollar}{management.endpoints.web.base-path}/** ${symbol_pound} 不处理 Actuator 的请求
   access-log: ${symbol_pound} 访问日志的配置项
     enable: false
   error-code: ${symbol_pound} 错误码相关配置项
