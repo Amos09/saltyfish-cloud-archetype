@@ -4,6 +4,7 @@
         <groupId>com.saltyfish</groupId>
         <artifactId>saltyfish-cloud-framework</artifactId>
         <version>1.0.0</version>
+		<relativePath/>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>${groupId}</groupId>
