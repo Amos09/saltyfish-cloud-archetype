@@ -8,21 +8,21 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
+ * 服务启动入口
+ *
  * @author: 番薯(Amos)
- * @dateTime: 9:51/25:07:2022
- * @version: v1.0
- * @description: 服务启动入口
+ * @date: 9:51/25:07:2022
  */
 @SpringBootApplication
 @EnableFeignClients
 public class ServerStartApplication {
 
-	private static final Logger logger = LoggerFactory.getLogger(ServerStartApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(ServerStartApplication.class);
 
-	public static void main(String[] args) {
-		ConfigurableApplicationContext run = SpringApplication.run(ServerStartApplication.class, args);
-		logger.info("{} 服务启动成功; 端口号: {}", run.getEnvironment().getProperty("spring.application.name"),
-				run.getEnvironment().getProperty("server.port"));
-	}
+    public static void main(String[] args) {
+        ConfigurableApplicationContext run = SpringApplication.run(ServerStartApplication.class, args);
+        logger.info("{} 服务启动成功; 端口号: {}", run.getEnvironment().getProperty("spring.application.name"),
+                run.getEnvironment().getProperty("server.port"));
+    }
 
 }

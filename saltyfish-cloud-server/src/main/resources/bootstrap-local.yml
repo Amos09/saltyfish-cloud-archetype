@@ -30,9 +30,9 @@ spring:
     # 是否开启sentinel
     enabled: true
     filter:
-       enabled: true
+      enabled: true
     # 取消Sentinel控制台懒加载
     eager: true
     transport:
-       #port: @sentinel.port@
-       dashboard: 101.34.28.222:8858
+      #port: @sentinel.port@
+      dashboard: 101.34.28.222:8858

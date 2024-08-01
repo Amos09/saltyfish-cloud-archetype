@@ -1,7 +1,7 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-package ${package}.server.config;
+#set($symbol_pound='#')
+        #set($symbol_dollar='$')
+        #set($symbol_escape='\' )
+        package ${package}.server.config;
 
 import ${package}.client.constant.ApiConstants;
 import com.saltyfish.framework.security.config.AuthorizeRequestsCustomizer;
@@ -16,27 +16,27 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 @Configuration(proxyBeanMethods = false, value = "SecurityConfiguration")
 public class SecurityConfiguration {
 
-	@Bean("authorizeRequestsCustomizer")
-	public AuthorizeRequestsCustomizer authorizeRequestsCustomizer() {
-		return new AuthorizeRequestsCustomizer() {
+    @Bean("authorizeRequestsCustomizer")
+    public AuthorizeRequestsCustomizer authorizeRequestsCustomizer() {
+        return new AuthorizeRequestsCustomizer() {
 
-			@Override
-			public void customize(
-					ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry) {
-				// Swagger 接口文档
-				registry.antMatchers("/v3/api-docs/**")
-					.permitAll() // 元数据
-					.antMatchers("/swagger-ui.html")
-					.permitAll(); // Swagger UI
-				// Spring Boot Actuator 的安全配置
-				registry.antMatchers("/actuator").anonymous().antMatchers("/actuator/**").anonymous();
-				// Druid 监控
-				registry.antMatchers("/druid/**").anonymous();
-				// RPC 服务的安全配置
-				registry.antMatchers(ApiConstants.PREFIX + "/**").permitAll();
-			}
+            @Override
+            public void customize(
+                    ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry) {
+                // Swagger 接口文档
+                registry.antMatchers("/v3/api-docs/**")
+                        .permitAll() // 元数据
+                        .antMatchers("/swagger-ui.html")
+                        .permitAll(); // Swagger UI
+                // Spring Boot Actuator 的安全配置
+                registry.antMatchers("/actuator").anonymous().antMatchers("/actuator/**").anonymous();
+                // Druid 监控
+                registry.antMatchers("/druid/**").anonymous();
+                // RPC 服务的安全配置
+                registry.antMatchers(ApiConstants.PREFIX + "/**").permitAll();
+            }
 
-		};
-	}
+        };
+    }
 
 }

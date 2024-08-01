@@ -33,9 +33,9 @@ spring:
     ${symbol_pound} 是否开启sentinel
     enabled: true
     filter:
-       enabled: true
+      enabled: true
     ${symbol_pound} 取消Sentinel控制台懒加载
     eager: true
     transport:
-       ${symbol_pound}port: @sentinel.port@
-       dashboard: 101.34.28.222:8858
+      ${symbol_pound}port: @sentinel.port@
+      dashboard: 101.34.28.222:8858
