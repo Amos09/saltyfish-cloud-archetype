@@ -1,7 +1,7 @@
-#set($symbol_pound='#')
-        #set($symbol_dollar='$')
-        #set($symbol_escape='\' )
-        package ${package}.server.config;
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+package ${package}.server.config;
 
 import ${package}.client.constant.ApiConstants;
 import com.saltyfish.framework.security.config.AuthorizeRequestsCustomizer;
