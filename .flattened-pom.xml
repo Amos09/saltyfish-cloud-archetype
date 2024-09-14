@@ -27,6 +27,14 @@
     <module>saltyfish-cloud-adapter</module>
     <module>saltyfish-cloud-server</module>
   </modules>
+  <properties>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <maven.plugin.version>3.8.1</maven.plugin.version>
+  </properties>
   <build>
     <extensions>
       <extension>
