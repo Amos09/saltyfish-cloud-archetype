@@ -236,6 +236,12 @@
             <include>.flattened-pom.xml</include>
           </includes>
         </fileSet>
+        <fileSet encoding="UTF-8">
+          <directory></directory>
+          <includes>
+            <include>Dockerfile</include>
+          </includes>
+        </fileSet>
       </fileSets>
     </module>
   </modules>
